@@ -19,7 +19,7 @@ public class QuickSort {
 		int rightPointer = right - 1;
 		int pivot = A[right];
 		
-		/* First while loop: loops until the element at 'leftPointer' is bigger then the pivot
+		/* First while loop: loops until the eelement at 'leftPointer' is bigger then the pivot
 		 * Second while loop: loops until the element at 'rightPointer' is smaller then the pivot
 		 * Now those two elements get changed
 		 * This continues until the leftPointer and rightPointer intersect, now the pivot element gets
