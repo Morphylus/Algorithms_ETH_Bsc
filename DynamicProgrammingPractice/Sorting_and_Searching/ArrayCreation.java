@@ -32,5 +32,12 @@ public class ArrayCreation {
 		
 		return array;
 	}
+	
+	// Prints an Array
+	public static void printArray(int[] A) {
+		for (int i = 0; i < A.length; i++) {
+			System.out.print(A[i] + " ");
+		}
+	}
 
 }
