@@ -6,13 +6,10 @@ public class PlayGround {
 	public static void main(String[] args) {
 		Random rand = new Random();
 
-		int[] A = ArrayCreation.createRandomArray(10, 20);
-		int[] B = QuickSort.quickSort(A, 0, A.length - 1);
+		int[] A = { 3, 7, 5, 1, 4 };
 		
-		Arrays.sort(A);
-		System.out.println(Arrays.toString(A));
-		System.out.println(Arrays.toString(B));
-		
+		System.out.println(Arrays.toString(HeapSort.heapSort(A)));
+
 	}
 
 }
