@@ -1,18 +1,18 @@
 
 public class HeapSort {
 	public static int[] heapSort(int[] A) {
-		int mid = (int) Math.floor((A.length-1)/2);
+		int mid = (A.length-1)/2;
 		
-		for (int i = mid; i > 0; i--) {
+		for (int i = mid; i >= 0; i--) {
 			restoreHeapCondition(A, i, A.length-1);
 		}
 		
-		for (int i = A.length - 1; i < 0; i--) {
+		for (int i = A.length - 1; i > 0; i--) {
 			int temp = A[0];
-			A[0] = A[A.length-1];
-			A[A.length-1] = temp;
+			A[0] = A[i];
+			A[i] = temp;
 			
-			restoreHeapCondition(A, 1, i-1);
+			restoreHeapCondition(A, 0, i-1);
 		}
 		
 		return A;
@@ -24,17 +24,24 @@ public class HeapSort {
 			int childrenPointer = 2 * mainPointer;
 			
 			if (childrenPointer + 1 <= arrayLength) {
-				if (A[childrenPointer] > A[childrenPointer + 1]) {
+				if (A[childrenPointer] < A[childrenPointer + 1]) {
 					childrenPointer++;
 				}
+				if (A[mainPointer] >= A[childrenPointer]) {
+					break;
+				} else {
+					int temp = A[mainPointer];
+					A[mainPointer] = A[childrenPointer];
+					A[childrenPointer] = temp;				
+				}
 			}
-			if (A[mainPointer] <= A[childrenPointer]) {
-				int temp = A[mainPointer];
-				A[mainPointer] = A[childrenPointer];
-				A[childrenPointer] = temp;
-			}
+			
 			mainPointer = childrenPointer;
-		}	
+			
+			if (arrayLength == 0) {
+				break;
+			}
+		}
 		
 	}
 }
