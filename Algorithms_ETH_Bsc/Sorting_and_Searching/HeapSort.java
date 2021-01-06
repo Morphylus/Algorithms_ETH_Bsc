@@ -3,7 +3,7 @@ public class HeapSort {
 	public static int[] heapSort(int[] A) {
 		int mid = (int) Math.floor((A.length-1)/2);
 		
-		for (int i = mid; i > 0; i--) {
+		for (int i = mid; i >= 0; i--) {
 			restoreHeapCondition(A, i, A.length-1);
 		}
 		
@@ -24,7 +24,7 @@ public class HeapSort {
 			int childrenPointer = 2 * mainPointer;
 			
 			if (childrenPointer + 1 <= arrayLength) {
-				if (A[childrenPointer] > A[childrenPointer + 1]) {
+				if (A[childrenPointer] < A[childrenPointer + 1]) {
 					childrenPointer++;
 				}
 			}
