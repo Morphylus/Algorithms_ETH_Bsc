@@ -8,6 +8,7 @@
 	<classpathentry kind="src" path="Sorting_and_Searching"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="DynamicProgramming"/>
+	<classpathentry kind="src" path="Graph_Algorithms"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
