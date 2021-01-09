@@ -19,6 +19,10 @@ public class GraphPlayground {
 		
 		GraphFunctions.printGraph(g);
 		
+		DepthFirstSearch d = new DepthFirstSearch(g);
+		
+		d.dfs();
+		
 	}
 
 }
