@@ -1,3 +1,4 @@
+import graphs.*;
 
 public class GraphPlayground {
 
