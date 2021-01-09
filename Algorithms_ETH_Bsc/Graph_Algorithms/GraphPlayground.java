@@ -18,6 +18,7 @@ public class GraphPlayground {
 		g.addEdge(6, 4, 1);
 		
 		GraphFunctions.printGraph(g);
+		
 	}
 
 }
