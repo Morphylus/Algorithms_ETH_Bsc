@@ -35,36 +35,54 @@ public class GraphFunctions {
 		/* Unweighted graph*/
 		if (weighted == false) {
 			for (int i = 0; i < g.V; i++) {
-				if(!g.addRandomEdge(i, rand.nextInt(V), 1)) {
-					i--;
-				} else {
-					E--;
-				}
+				if(!g.addRandomEdge(i, rand.nextInt(V), 1)) {i--;} 
+				else {E--;}
 			}
 			
 			while (E > 0) {
-				if(g.addRandomEdge(rand.nextInt(V), rand.nextInt(V), 1)) {
-					E--;
-				}
+				if(g.addRandomEdge(rand.nextInt(V), rand.nextInt(V), 1)) {E--;}
 			}
 		/* Weighted graph*/	
 		} else {
 			for (int i = 0; i < g.V; i++) {
-				if(!g.addRandomEdge(i, rand.nextInt(V), rand.nextInt(20))) {
-					i--;
-				} else {
-					E--;					
-				}
+				if(!g.addRandomEdge(i, rand.nextInt(V), rand.nextInt(20))) {i--;} 
+				else {E--;}
 			}
 			
 			while (E > 0) {
-				if (g.addRandomEdge(rand.nextInt(V), rand.nextInt(V), rand.nextInt(20))) {
-					E--;
-				}
+				if (g.addRandomEdge(rand.nextInt(V), rand.nextInt(V), rand.nextInt(20))) {E--;}
 			}
 		}
-		
 		return g;
+	}
+	
+	//TODO Implement Acyclic graph generation
+	/* Generate an unweighted/weighted random acyclic graph*/
+	public static Graph createAcyclicGraph(int V, boolean weighted) {
+		Random rand = new Random();
+		
+		Graph g = new Graph(V);
+		
+		if (weighted == false) {
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 }

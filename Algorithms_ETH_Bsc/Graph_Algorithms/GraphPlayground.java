@@ -11,11 +11,12 @@ public class GraphPlayground {
 		g.addEdge(0, 2, 1);
 		g.addEdge(1, 2, 1);
 		g.addEdge(2, 3, 1);
-		g.addEdge(3, 0, 1);
+		
+		Graph h = GraphFunctions.createGraph(5, 6, false);
 		
 		
-		TopoSort t = new TopoSort(g);
-		GraphFunctions.printGraph(g);
+		TopoSort t = new TopoSort(h);
+		GraphFunctions.printGraph(h);
 		t.topoSort();
 		
 	}
