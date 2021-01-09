@@ -7,4 +7,8 @@ public class Edge {
 		this.dest = dest;
 		this.weight = weight;
 	}
+	
+	public String printEdge() {
+		return "(" + dest + ", " + weight + ")"; 
+	}
 }
