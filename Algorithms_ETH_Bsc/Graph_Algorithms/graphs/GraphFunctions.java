@@ -23,24 +23,44 @@ public class GraphFunctions {
 		}
 	}
 	
-	//TODO Implement Random weighted/unweighted graph generation
-	public static Graph createRandomPosGraph(int V, int E, boolean weighted) throws IllegalArgumentException {
+	/* Generates an unweighted/weighted random graph*/
+	public static Graph createGraph(int V, int E, boolean weighted) throws IllegalArgumentException {
 		Random rand = new Random();
-		LinkedList<Edge> memory = new LinkedList<Edge>();
-		
-		if (E > V*(V-1)) {
-			throw new IllegalArgumentException("Too many edges");
+		if (E < V || E > (V*(V-1))) {
+			throw new IllegalArgumentException("To many/few edges!");
 		}
 		
 		Graph g = new Graph(V);
 		
+		/* Unweighted graph*/
 		if (weighted == false) {
-			for (int i = 0; i < E; i++) {
-				g.addEdge(rand.nextInt(V), rand.nextInt(V), 1);
+			for (int i = 0; i < g.V; i++) {
+				if(!g.addRandomEdge(i, rand.nextInt(V), 1)) {
+					i--;
+				} else {
+					E--;
+				}
 			}
+			
+			while (E > 0) {
+				if(g.addRandomEdge(rand.nextInt(V), rand.nextInt(V), 1)) {
+					E--;
+				}
+			}
+		/* Weighted graph*/	
 		} else {
-			for (int i = 0; i < E; i++) {
-				g.addEdge(rand.nextInt(V), rand.nextInt(V), rand.nextInt(100));
+			for (int i = 0; i < g.V; i++) {
+				if(!g.addRandomEdge(i, rand.nextInt(V), rand.nextInt(20))) {
+					i--;
+				} else {
+					E--;					
+				}
+			}
+			
+			while (E > 0) {
+				if (g.addRandomEdge(rand.nextInt(V), rand.nextInt(V), rand.nextInt(20))) {
+					E--;
+				}
 			}
 		}
 		

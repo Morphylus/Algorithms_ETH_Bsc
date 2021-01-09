@@ -13,7 +13,7 @@ public class Edge {
 		return "(" + dest + ", " + weight + ")"; 
 	}
 	
-	public boolean equals(Edge o) {
+	public boolean equals(Object o) {
 		return o instanceof Edge && ((Edge)o).dest == dest;
 	}
 }

@@ -16,9 +16,9 @@ public class GraphPlayground {
 		g.addEdge(4, 5, 1);
 		g.addEdge(5, 2, 1);
 		g.addEdge(6, 4, 1);
-		g.addEdge(6, 4, 1);
 		
-		GraphFunctions.printGraph(g);
+		Graph h = GraphFunctions.createGraph(6, 10, true);
+		GraphFunctions.printGraph(h);
 		
 	}
 

@@ -23,8 +23,21 @@ public class Graph {
 	public void addEdge(int src, int dest, int weight) {
 		Edge e = new Edge(dest,weight);
 
-			if (!L.get(src).contains(e)) {
+			if (!L.get(src).contains(e) && src != dest) {
 				L.get(src).add(e);
+			}
+		
+	}
+	
+	/* Internal use only*/
+	public boolean addRandomEdge(int src, int dest, int weight) {
+		Edge e = new Edge(dest,weight);
+
+			if (!L.get(src).contains(e) && dest != src) {
+				L.get(src).add(e);
+				return true;
+			} else {
+				return false;
 			}
 		
 	}
