@@ -78,11 +78,8 @@ public class GraphFunctions {
 			
 			for (int i = 0; i < V-1; i++) {
 				int pos = i;
-				if (!g.addRandomEdge(permutation.get(pos), permutation.get(rand.nextInt(V - pos) + pos), 1)) {
-					i--;
-				} else {
-					E--;
-				}
+				if (!g.addRandomEdge(permutation.get(pos), permutation.get(rand.nextInt(V - pos) + pos), 1)) {i--;} 
+				else {E--;}
 			}
 			
 			
