@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.LinkedList;
+import java.util.Collections;
 
 
 public class GraphFunctions {
@@ -60,29 +61,35 @@ public class GraphFunctions {
 	/* Generate an unweighted/weighted random acyclic graph*/
 	public static Graph createAcyclicGraph(int V, boolean weighted) {
 		Random rand = new Random();
+		ArrayList<Integer> permutation = new ArrayList<Integer>();
 		
 		Graph g = new Graph(V);
 		
+		// Creates random permutation to use as topological sort
+		for (int i = 0; i < V; i++) {
+			permutation.add(i);
+		}
+		Collections.shuffle(permutation);
+		
+		System.out.println(permutation.toString());
+		
 		if (weighted == false) {
+			int E = rand.nextInt((V*(V-1))-V) + V;
+			
+			for (int i = 0; i < V-1; i++) {
+				int pos = i;
+				if (!g.addRandomEdge(permutation.get(pos), permutation.get(rand.nextInt(V - pos) + pos), 1)) {
+					i--;
+				} else {
+					E--;
+				}
+			}
+			
+			
 			
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		return g;
 		
 	}
 }

@@ -33,6 +33,7 @@ public class Graph {
 	public boolean addRandomEdge(int src, int dest, int weight) {
 		Edge e = new Edge(dest,weight);
 
+			//Creates if there is: not a duplicate && not a arrow to itself
 			if (!L.get(src).contains(e) && dest != src) {
 				L.get(src).add(e);
 				return true;
