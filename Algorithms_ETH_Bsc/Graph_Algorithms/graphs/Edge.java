@@ -12,4 +12,8 @@ public class Edge {
 	public String printEdge() {
 		return "(" + dest + ", " + weight + ")"; 
 	}
+	
+	public boolean equals(Edge o) {
+		return o instanceof Edge && ((Edge)o).dest == dest;
+	}
 }
