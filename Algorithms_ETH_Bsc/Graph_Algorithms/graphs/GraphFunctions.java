@@ -59,7 +59,11 @@ public class GraphFunctions {
 	
 	//TODO Implement Acyclic graph generation
 	/* Generate an unweighted/weighted random acyclic graph*/
-	public static Graph createAcyclicGraph(int V, boolean weighted) {
+	public static Graph createAcyclicGraph(int V, int E, boolean weighted) {
+		if (E > (V*(V-1)) || E < V) {
+			throw new IllegalArgumentException("To many/few edges");
+		}
+		
 		Random rand = new Random();
 		ArrayList<Integer> permutation = new ArrayList<Integer>();
 		
@@ -73,17 +77,36 @@ public class GraphFunctions {
 		
 		System.out.println(permutation.toString());
 		
+		/* This will create an unweighted graph*/
 		if (weighted == false) {
-			int E = rand.nextInt((V*(V-1))-V) + V;
-			
 			for (int i = 0; i < V-1; i++) {
 				int pos = i;
 				if (!g.addRandomEdge(permutation.get(pos), permutation.get(rand.nextInt(V - pos) + pos), 1)) {i--;} 
 				else {E--;}
 			}
 			
+			while (E > 0) {
+				int srcIndex = rand.nextInt(V-1);
+				int destIndex = rand.nextInt((V-1) - srcIndex) + srcIndex;
+				
+				if (g.addRandomEdge(permutation.get(srcIndex), permutation.get(destIndex), 1)) {E--;}
+			}
 			
 			
+		/* This will create a weighted graph*/
+		} else {
+			for (int i = 0; i < V-1; i++) {
+				int pos = i;
+				if (!g.addRandomEdge(permutation.get(pos), permutation.get(rand.nextInt(V - pos) + pos), rand.nextInt(20))) {i--;} 
+				else {E--;}
+			}
+			
+			while (E > 0) {
+				int srcIndex = rand.nextInt(V-1);
+				int destIndex = rand.nextInt((V-1) - srcIndex) + srcIndex;
+				
+				if (g.addRandomEdge(permutation.get(srcIndex), permutation.get(destIndex), rand.nextInt(20))) {E--;}
+			}
 		}
 		
 		return g;

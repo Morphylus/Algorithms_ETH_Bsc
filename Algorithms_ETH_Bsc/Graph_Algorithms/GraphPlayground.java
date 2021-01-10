@@ -8,8 +8,12 @@ public class GraphPlayground {
 		
 		
 		
-		Graph g = GraphFunctions.createAcyclicGraph(10, false);
+		Graph g = GraphFunctions.createAcyclicGraph(10, 20, true);
 		GraphFunctions.printGraph(g);
+		
+		TopoSort t = new TopoSort(g);
+		
+		t.topoSort();
 		
 	}
 
