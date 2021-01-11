@@ -29,6 +29,7 @@ public class ShortestPathBFS {
 			int current = Q.poll();
 			
 			/* For each successor of the currently active vertex, check if the predecessor has been stored,
+			 * if it has been stored, it means the successor has already been visited,
 			 * if not, set the predecessor of the successor to the current vertex (Line 1),
 			 * set the length to get to the successor to the length to get to the current vertex + 1 (Line 2)
 			 * and add the successor of the current vertex to the Queue (Line 3)*/
