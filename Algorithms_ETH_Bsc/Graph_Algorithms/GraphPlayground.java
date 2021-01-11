@@ -10,13 +10,21 @@ public class GraphPlayground {
 		
 		
 
-		Graph g = GraphFunctions.createAcyclicGraph(20, 50, false, perm);
+		Graph g = new Graph(6);
+		
+		g.addEdge(0, 1, 1);
+		g.addEdge(0, 2, 1);
+		g.addEdge(5, 4, 1);
+		g.addEdge(3, 5, 1);
+		g.addEdge(1, 3, 1);
+		g.addEdge(2, 3, 1);
+		g.addEdge(3, 4, 1);
 
 		GraphFunctions.printGraph(g);
 		
 		ShortestPathBFS sp = new ShortestPathBFS(g);
 		
-		sp.shortestPath(g, 0, 15);
+		sp.shortestPath(g, 1, 5);
 		
 	}
 
