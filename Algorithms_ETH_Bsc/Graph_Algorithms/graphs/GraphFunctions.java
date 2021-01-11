@@ -57,9 +57,8 @@ public class GraphFunctions {
 		return g;
 	}
 	
-	//TODO Implement Acyclic graph generation
 	/* Generate an unweighted/weighted random acyclic graph*/
-	public static Graph createAcyclicGraph(int V, int E, boolean weighted) {
+	public static Graph createAcyclicGraph(int V, int E, boolean weighted, int[] perm) {
 		if (E > (V*(V-1)) || E < V) {
 			throw new IllegalArgumentException("To many/few edges");
 		}
@@ -69,11 +68,18 @@ public class GraphFunctions {
 		
 		Graph g = new Graph(V);
 		
-		// Creates random permutation to use as topological sort
-		for (int i = 0; i < V; i++) {
-			permutation.add(i);
+		/* Create a random permutation if the user did not specify a permutation, otherwise it uses
+		 * the permutation of the user as permutation*/
+		if (perm == null) {
+			for (int i = 0; i < V; i++) {
+				permutation.add(i);
+			}		
+			Collections.shuffle(permutation);			
+		} else {
+			for (int i = 0; i < V; i++) {
+				permutation.add(perm[i]);
+			}
 		}
-		Collections.shuffle(permutation);
 		
 		System.out.println(permutation.toString());
 		

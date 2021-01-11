@@ -6,14 +6,15 @@ public class GraphPlayground {
 		
 		/* This would create an unweighted graph, since all edgeWeights are equal*/
 		
+		int[] perm = {0, 19, 3, 11, 6, 4, 18, 13, 12, 2, 1, 15, 14, 16, 5, 7, 17, 8, 9, 10};
 		
 		
-		Graph g = GraphFunctions.createAcyclicGraph(10, 20, true);
+		Graph g = GraphFunctions.createAcyclicGraph(20, 50, false, perm);
 		GraphFunctions.printGraph(g);
 		
-		TopoSort t = new TopoSort(g);
+		ShortestPathBFS sp = new ShortestPathBFS(g);
 		
-		t.topoSort();
+		sp.shortestPath(g, 0, 15);
 		
 	}
 
