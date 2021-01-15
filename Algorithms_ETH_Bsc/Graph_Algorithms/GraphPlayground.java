@@ -20,11 +20,13 @@ public class GraphPlayground {
 		g.addEdge(3, 5, -5);
 		g.addEdge(5, 4, -3);
 		
-
-		GraphFunctions.printGraph(g);
+		Graph h = GraphFunctions.createAcyclicGraph(20, 50, true, perm);
 		
-		BellmannFord b = new BellmannFord(g);
-		b.shortestPath(0);
+		GraphFunctions.printGraph(h);
+		
+		Dijkstra d = new Dijkstra(h);
+		
+		d.shortestPath(0);
 		
 	}
 

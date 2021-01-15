@@ -3,12 +3,12 @@ import java.util.PriorityQueue;
 import java.util.Arrays;
 
 
-public class Dijkstras {
+public class Dijkstra {
 	Graph g;
 	int[] predecessor;
 	int[] distance;
 	
-	public Dijkstras(Graph g) {
+	public Dijkstra(Graph g) {
 		this.g = g;
 		this.predecessor = new int[g.V];
 		this.distance = new int[g.V];
