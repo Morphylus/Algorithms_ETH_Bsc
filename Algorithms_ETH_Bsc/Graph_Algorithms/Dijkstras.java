@@ -30,7 +30,7 @@ public class Dijkstras {
 		PriorityQueue<Node> Q = new PriorityQueue<Node>();
 		Q.add(new Node(start, 0));
 		
-		/* The while loop continues until all Vertevies have been inspected*/
+		/* The while loop continues until all Vertecies have been inspected*/
 		while(!Q.isEmpty()) {
 			int activeVertex = Q.remove().getValue();
 			
@@ -38,25 +38,35 @@ public class Dijkstras {
 			for (int i = 0; i < g.L.get(activeVertex).size(); i++) {
 				int successor = g.L.get(activeVertex).get(i).dest;
 				
-				
+				/* If the successor has not been inspected until now, we add the distance to the active vertex
+				 * + the weight of the edge from the active vertex to the successor as the distance.*/
 				if (predecessor[successor] == -1) {
+					/* Sets the distance*/
 					distance[successor] = distance[activeVertex] + g.L.get(activeVertex).get(i).weight;
+					/* Sets the predecessor of the vertex*/
 					predecessor[successor] = activeVertex;
 					
+					/* Adds the successor to the queue to check it later*/
 					Q.add(new Node(successor, distance[successor]));
 					
+				/* This if sequence gets called if a distance has already been set for the next vertecie, but
+				 * the distance over this edge makes the distance shorter, then we overwrite all the data*/
 				} else if (distance[activeVertex] + g.L.get(activeVertex).get(i).weight < distance[g.L.get(activeVertex).get(i).dest]) {
 					int prio = distance[successor];
 					
+					/* Updates the distance to the vertex*/
 					distance[successor] = distance[activeVertex] + g.L.get(activeVertex).get(i).weight;
+					/* Updates the predecessor of the vertex*/
 					predecessor[successor] = activeVertex;
 					
+					/* Adds the vertex to the queue for later inspection*/
 					Q.remove(new Node(successor, prio));
 					Q.add(new Node(successor, distance[successor]));
 				}
 			}
 		}
 		
+		/* Prints out the arrays*/
 		for (int i = 0; i < predecessor.length; i++) {
 			System.out.println("Vertex " + i + ":\nPredecessor: " + predecessor[i] + "\tSP_Distance: " + distance[i]);
 		}
