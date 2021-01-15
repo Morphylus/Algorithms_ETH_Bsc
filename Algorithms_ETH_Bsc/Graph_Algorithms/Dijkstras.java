@@ -18,7 +18,7 @@ public class Dijkstras {
 	public void shortestPath(int start) {
 		/* Initialization of distance and predecessor arrays*/
 		for (int i = 0; i < predecessor.length; i++) {
-			predecessor[i] = Integer.MAX_VALUE;
+			predecessor[i] = -1;
 			distance[i] = Integer.MAX_VALUE;
 		}
 		
@@ -32,25 +32,27 @@ public class Dijkstras {
 		
 		/* The while loop continues until all Vertevies have been inspected*/
 		while(!Q.isEmpty()) {
-			int activeVertex = Q.poll().getValue();
+			int activeVertex = Q.remove().getValue();
 			
 			/* This for loop inspects all the successors of the activeVertex*/
 			for (int i = 0; i < g.L.get(activeVertex).size(); i++) {
+				int successor = g.L.get(activeVertex).get(i).dest;
 				
-				if (predecessor[g.L.get(activeVertex).get(i).dest] == Integer.MAX_VALUE) {
-					distance[g.L.get(activeVertex).get(i).dest] = distance[activeVertex] + g.L.get(activeVertex).get(i).weight;
-					predecessor[g.L.get(activeVertex).get(i).dest] = activeVertex;
+				
+				if (predecessor[successor] == -1) {
+					distance[successor] = distance[activeVertex] + g.L.get(activeVertex).get(i).weight;
+					predecessor[successor] = activeVertex;
 					
-					Q.add(new Node(i, distance[g.L.get(activeVertex).get(i).dest]));
+					Q.add(new Node(successor, distance[successor]));
 					
 				} else if (distance[activeVertex] + g.L.get(activeVertex).get(i).weight < distance[g.L.get(activeVertex).get(i).dest]) {
-					int prio = distance[g.L.get(activeVertex).get(i).dest];
+					int prio = distance[successor];
 					
-					distance[g.L.get(activeVertex).get(i).dest] = distance[activeVertex] + g.L.get(activeVertex).get(i).weight;
-					predecessor[g.L.get(activeVertex).get(i).dest] = activeVertex;
+					distance[successor] = distance[activeVertex] + g.L.get(activeVertex).get(i).weight;
+					predecessor[successor] = activeVertex;
 					
-					Q.remove(new Node(i, prio));
-					Q.add(new Node(i, distance[g.L.get(activeVertex).get(i).dest]));
+					Q.remove(new Node(successor, prio));
+					Q.add(new Node(successor, distance[successor]));
 				}
 			}
 		}
