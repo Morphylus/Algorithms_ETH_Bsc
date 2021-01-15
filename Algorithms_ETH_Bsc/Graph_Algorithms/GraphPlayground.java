@@ -12,18 +12,19 @@ public class GraphPlayground {
 
 		Graph g = new Graph(6);
 		
-		g.addEdge(0, 1, 10);
-		g.addEdge(0, 2, 5);
-		g.addEdge(1, 3, 10);
-		g.addEdge(2, 3, 4);
-		g.addEdge(3, 4, 40);
-		g.addEdge(3, 5, 1);
-		g.addEdge(5, 4, 2);
+		g.addEdge(0, 1, 1);
+		g.addEdge(0, 2, 10);
+		g.addEdge(1, 3, 1);
+		g.addEdge(2, 3, 5);
+		g.addEdge(3, 4, 1);
+		g.addEdge(3, 5, -5);
+		g.addEdge(5, 4, -3);
+		
 
 		GraphFunctions.printGraph(g);
 		
-		Dijkstras d = new Dijkstras(g);
-		d.shortestPath(0);
+		BellmannFord b = new BellmannFord(g);
+		b.shortestPath(0);
 		
 	}
 
