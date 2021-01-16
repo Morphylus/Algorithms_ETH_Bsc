@@ -17,16 +17,15 @@ public class GraphPlayground {
 		g.addEdge(1, 3, 1);
 		g.addEdge(2, 3, 5);
 		g.addEdge(3, 4, 1);
-		g.addEdge(3, 5, -5);
-		g.addEdge(5, 4, -3);
+		g.addEdge(3, 5, 5);
+		g.addEdge(5, 4, 3);
 		
-		Graph h = GraphFunctions.createAcyclicGraph(20, 50, true, perm);
+		
+		Graph h = GraphFunctions.createGraph(20, 50, true);
 		
 		GraphFunctions.printGraph(h);
-		
-		Dijkstra d = new Dijkstra(h);
-		
-		d.shortestPath(0);
+		FloydWarshall f = new FloydWarshall(h);
+		f.shortestPath();
 		
 	}
 
